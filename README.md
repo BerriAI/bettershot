@@ -12,10 +12,6 @@ To get started with bettershot, you will need to first install the library by ru
 
 `pip install bettershot`
 
-Once installed, you can import it into your python project by running the following:
-
-`import bettershot`
-
 ## Using bettershot
 
 It's just 1 line of code: 
@@ -25,7 +21,8 @@ It's just 1 line of code:
 Here's 2 examples of using it: 
 
 ### Calling the 'raw' OpenAI API
-```from bettershot import log
+```
+from bettershot import log
 import openai 
 
 def simple_openai_call(query):
@@ -37,7 +34,8 @@ def simple_openai_call(query):
             )
     log(messages=messages, completion=completion, user_email="YOUR_EMAIL", query=query) #JUST 1 LINE OF CODE!! 
 
-simple_openai_call("hey! how's it going?")```
+simple_openai_call("hey! how's it going?")
+```
 
 ### Calling the Langchain OpenAI API 
 
@@ -52,7 +50,8 @@ def simple_langchain_call(query):
     result = chat(messages)
     log(messages=messages, completion=completion, user_email="YOUR_EMAIL", query=query) #JUST 1 LINE OF CODE!! 
 
-simple_langchain_call("hey! how's it going?")```
+simple_langchain_call("hey! how's it going?")
+```
 
 ## Contributing
 
