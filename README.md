@@ -38,6 +38,10 @@ simple_openai_call("hey! how's it going?")
 ### Calling the Langchain OpenAI API 
 
 ```
+import openai
+import langchain 
+from bettershot import log
+
 def simple_langchain_call(query):
     chat = ChatOpenAI(model="gpt-3.5-turbo", temperature=0.7)
     prompt = "You are an extremely intelligent AI assistant for BerriAI, answer all questions resepectfully and in a warm tone"
@@ -69,8 +73,8 @@ Each question is run in parallel and results are added to your dashboard in real
 
 ## Contributing
 
-We welcome contributions to InstructPrompt! Feel free to create issues/PR's/or DM us (👋 Hi I'm Krrish - +17708783106)
+We welcome contributions to bettershot! Feel free to create issues/PR's/or DM us (👋 Hi I'm Krrish - +17708783106)
 
 ## License
 
-InstructPrompt is released under the [MIT License](https://github.com/instructprompt/readme/blob/master/LICENSE).
+bettershot is released under the [MIT License](https://github.com/bettershot/readme/blob/master/LICENSE).
