@@ -1,4 +1,4 @@
-# bettershot 📸🚀
+# bettershot 💡🚀
 
 ⚡️ A Python package for adding error monitoring to LLM Apps in a few minutes ⚡
 
