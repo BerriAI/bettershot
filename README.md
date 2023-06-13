@@ -16,7 +16,8 @@ It's just 1 line of code:
 
 `log(messages=messages, completion=result, user_email="YOUR_EMAIL", query=query)`
 
-![7f11c616-853a-4016-802c-ef705dea51c7](https://github.com/ClerkieAI/bettershot/assets/17561003/c16c7149-bf57-4fc1-8f50-76e16850a0a2)
+<img width="1038" alt="Screen Shot 2023-06-13 at 10 08 36 AM" src="https://github.com/ClerkieAI/bettershot/assets/17561003/977ee3b6-3ed9-4d28-9aeb-35794dcb44b2">
+
 Here's 2 examples of using it: 
 
 ### Calling the 'raw' OpenAI API
