@@ -5,20 +5,7 @@ from langchain.schema import (AIMessage, HumanMessage, SystemMessage)
 
 url = "https://bettershot-w6mm.zeet-berri.zeet.app/openai_listener"
 
-# def log(messages, completion, user_email, openai_api_key): 
-#     payload = {
-#     "messages": messages,
-#     "completion": completion,
-#     "openai_api_key": openai_api_key
-#     }
-#     headers = {
-#         "Content-Type": "application/json",
-#     }
-#     response = requests.post(url, headers=headers, data=json.dumps(payload))
-#     print(response)
-#     return {"response" : response}
-
-def log(messages, completion, user_email, openai_api_key, query):
+def log(messages, completion, user_email, openai_api_key, query, customer_id=None):
     raw_messages = []
     for message in messages: 
         if isinstance(message, SystemMessage):
@@ -40,7 +27,8 @@ def log(messages, completion, user_email, openai_api_key, query):
         "completion": raw_completion,
         "openai_api_key": openai_api_key, 
         "user_email": user_email, 
-        "user_query": query
+        "user_query": query,
+        "customer_id": customer_id
     }
     headers = {
         "Content-Type": "application/json",
