@@ -6,9 +6,9 @@
 
 ## Getting Started 
 
-bettershot automatically evaluates your OpenAI responses to determine if the model either invented new information (hallucination) or refused to answer ("Sorry, as an AI language model...") a user's question. This is useful when you want GPT to answer questions over specific data. 
+bettershot automatically evaluates your OpenAI responses to determine if the model either invented new information (hallucination) or refused to answer ("Sorry, as an AI language model...") a user's question. 
 
-To get started with bettershot, you will need to first install the library by running the following command:
+Install bettershot by running this command.:
 
 `pip install bettershot`
 
