@@ -6,8 +6,6 @@
 
 ## Getting Started 
 
-bettershot automatically evaluates your OpenAI responses to determine if the model either invented new information (hallucination) or refused to answer ("Sorry, as an AI language model...") a user's question. 
-
 Install bettershot by running this command.:
 
 `pip install bettershot`
@@ -52,6 +50,22 @@ def simple_langchain_call(query):
 
 simple_langchain_call("hey! how's it going?")
 ```
+
+bettershot automatically evaluates your OpenAI responses to determine if the model either invented new information (hallucination) or refused to answer ("Sorry, as an AI language model...") a user's question. 
+
+## How does eval work?
+
+Reliable + Fast testing is hard, and that's what we want to tackle.
+
+Each question is evaluated 3 times. 
+
+Each evaluation returns either True or False, along with the model's rationale for why it chose what it did. 
+
+We pick the evaluation (True/False) that occurs most, along with the model rationale to explain reasoning. 
+
+Each question is run in parallel and results are added to your dashboard in real-time. 
+
+>We will be sharing the prompts soon!
 
 ## Contributing
 
