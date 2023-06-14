@@ -12,7 +12,7 @@ def log(messages, completion, user_email, query, customer_id=None, openai_api_ke
             # messages': [{'role': 'user', 'content': "Hey! how's it going?"}]
             raw_message = {"role": "system", "content": message.content}
         elif isinstance(message, HumanMessage):
-            raw_message = {"role": "system", "content": message.content}
+            raw_message = {"role": "user", "content": message.content}
         elif isinstance(message, AIMessage):
             raw_message = {"role": "ai", "content": message.content}
         else: 
