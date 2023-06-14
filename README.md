@@ -18,6 +18,29 @@ It's just 1 line of code:
 
 ![7f11c616-853a-4016-802c-ef705dea51c7](https://github.com/ClerkieAI/bettershot/assets/17561003/c16c7149-bf57-4fc1-8f50-76e16850a0a2)
 
+### Dashboard 
+
+All your logs are available @ 'https://better-test.vercel.app/' + YOUR_EMAIL
+
+e.g. 
+`log(messages=messages, completion=result, user_email="krrish@berri.ai", query=query)`
+
+will have it's results logged @ 
+
+`https://better-test.vercel.app/krrish@berri.ai`
+
+### Implementation
+
+Here are all the items you can log: 
+
+| Parameter | Type | Required/Optional | Description |
+| --------- | ---- | ----------------- | ----------- |
+| `messages` | List | Required | The list of messages sent to the OpenAI chat completions endpoint |
+| `completion` | Dictionary | Required | The response received from the OpenAI chat completions endpoint |
+| `user_email` | String | Required | Your user email |
+| `query` | String | Required | The query being asked by your user |
+| `customer_id` | String | Optional | A way to identify your customer |
+
 Here's 2 examples of using it: 
 
 ### Calling the 'raw' OpenAI API
@@ -32,7 +55,7 @@ def simple_openai_call(query):
                 messages=messages
     
             )
-    log(messages=messages, completion=completion, user_email="YOUR_EMAIL", query=query) #JUST 1 LINE OF CODE!! 
+    log(messages=messages, completion=completion, user_email="YOUR_EMAIL", query=query, customer_id="fake_user@fake_accounts.xyz") #JUST 1 LINE OF CODE 🤯
 
 simple_openai_call("hey! how's it going?")
 ```
@@ -52,7 +75,7 @@ def simple_langchain_call(query):
       HumanMessage(content=query)
     ]
     result = chat(messages)
-    log(messages=messages, completion=completion, user_email="YOUR_EMAIL", query=query) #JUST 1 LINE OF CODE!! 
+    log(messages=messages, completion=completion, user_email="YOUR_EMAIL", query=query, customer_id="fake_user@fake_accounts.xyz") #JUST 1 LINE OF CODE 🎉 
 
 simple_langchain_call("hey! how's it going?")
 ```

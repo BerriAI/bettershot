@@ -1,11 +1,11 @@
-__version__ = '0.1.8'
+__version__ = '0.1.92'
 import requests
 import json 
 from langchain.schema import (AIMessage, HumanMessage, SystemMessage)
 
 url = "https://bettershot-w6mm.zeet-berri.zeet.app/openai_listener"
 
-def log(messages, completion, user_email, openai_api_key, query, customer_id=None):
+def log(messages, completion, user_email, query, customer_id=None, openai_api_key=None):
     raw_messages = []
     for message in messages: 
         if isinstance(message, SystemMessage):
@@ -25,7 +25,6 @@ def log(messages, completion, user_email, openai_api_key, query, customer_id=Non
     payload = {
         "messages": raw_messages,
         "completion": raw_completion,
-        "openai_api_key": openai_api_key, 
         "user_email": user_email, 
         "user_query": query,
         "customer_id": customer_id
@@ -35,4 +34,4 @@ def log(messages, completion, user_email, openai_api_key, query, customer_id=Non
     }
     response = requests.post(url, headers=headers, data=json.dumps(payload))
     print(response)
-    return {"response" : response}
+    return {"dashboard" : "https://better-test.vercel.app/" + user_email}
