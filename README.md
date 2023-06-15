@@ -4,6 +4,32 @@
 
 >BetterShot by BerriAI let’s you add error (hallucinations/refusal to answer) monitoring to your LLM App in a few minutes. Like Bugsnag/Sentry for LLM apps!
 
+## How it works 
+We designed Bettershot to flag errors in retrieval-augmented LLM Apps (i.e. you're trying to get GPT to answer questions over specific data). 
+
+Bettershot aims to detect 3 things: 
+- Was the question relevant to the data (i.e. filter out questions like "how's the weather?" if the chatbot's purpose was to answer questions on the history of jeans)
+
+If relevant then,
+- Did the model response invent new information when answering the question (i.e. information that was **not** in the prompt passed in)
+- Did the model refuse to answer the question (e.g. "Sorry as an AI language model...")
+
+We do this by using chatgpt (currently `gpt-3.5-turbo-16k`) to evaluate each prompt-response pair and determine these things. 
+
+#### Key Technical Challenges
+
+**LLM-based evaluations are inconsistent**
+We solved this by doing 2 things: 
+- We ask the LLM to write a rationale before making it's decision. Similar to CoT, this helps the model think through the decision - making results more consistent and understandable. 
+- We evaluate each prompt-response pair 5 times. Each evaluation returns either True or False, along with the model's rationale for why it chose what it did. We then pick the evaluation (True/False) that occurs most, along with the model rationale to explain reasoning.
+
+We base this on the assumption that if it made the same decision 4 times out of 5, then it's probably the right one (minimizing inconcistencies as much as possible). 
+
+**Latency for Production Applications**
+We do **not** want to add latency to your application. When you call our API endpoint, we pass your request in a separate thread, and immediately return a `response received` message - ending the call. This ensures minimal latency (`~0.004s`) is added to your application.
+
+>We will be sharing the prompts soon! Reach out to us @ krrish@berri.ai if that's a blocker to using this. 
+
 ## Getting Started 
 
 Install bettershot by running this command.:
@@ -81,20 +107,6 @@ simple_langchain_call("hey! how's it going?")
 ```
 
 bettershot automatically evaluates your OpenAI responses to determine if the model either invented new information (hallucination) or refused to answer ("Sorry, as an AI language model...") a user's question. 
-
-## How does eval work?
-
-Reliable + Fast testing is hard, and that's what we want to tackle.
-
-Each question is evaluated 3 times. 
-
-Each evaluation returns either True or False, along with the model's rationale for why it chose what it did. 
-
-We pick the evaluation (True/False) that occurs most, along with the model rationale to explain reasoning. 
-
-Each question is run in parallel and results are added to your dashboard in real-time. 
-
->We will be sharing the prompts soon!
 
 ## Contributing
 
